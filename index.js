@@ -1,14 +1,6 @@
-var request = require('request');
+var request = require('moviesearch');
 var AWS = require('aws-sdk');
-//var request = require("request");
-//var AWS = require("aws-sdk");
-//AWS.config.update({
-    //region: 'us-east-1',
-    //endpoint: 'http://dynamodb.us-east-1.amazonaws.com',
-    //endpoint: 'http://dynamodb:us-east-2:838411717014:table/movieTable',
-   // accessKeyId: "AKIAIJVDWB27GHXFVISQ",
-   // secretAccessKey: "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"
-  //});
+
 exports.handler = (event, context, callback) => {
   var url = `https://www.omdbapi.com/?t=${event.queryStringParameters.title}&plot=short&apikey=${process.env.ombdapikey}`
   addToDynamoDB(event.queryStringParameters.title);
